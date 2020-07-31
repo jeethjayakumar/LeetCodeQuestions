@@ -12,6 +12,7 @@
 #include <algorithm>
 using namespace std;
 
+// Approach Explanation: Go through the A and B sets and record the number of occurances in each count and also identify the number occurs in the same row. The count counter will give us the number needed for minimum Domino rotations needed.
 int minSwap_approach1(vector<int> &A, vector<int> &B)
 {
 	int countA[7], countB[7], same[7], i, sum;
@@ -36,6 +37,7 @@ int minSwap_approach1(vector<int> &A, vector<int> &B)
 	return -1;
 }
 
+// Approach Explanation: Take the first value in both A and B and identify the number of swaps needed in each sets. Minimum swaps in each turns will give us the minimum Domino swaps needed. 
 int numSwap(int &num,vector<int> &A, vector<int> &B)
 {
 	int numSwap, i;
