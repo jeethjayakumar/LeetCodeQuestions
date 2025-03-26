@@ -1,0 +1,23 @@
+#include "Testing.h"
+
+int main()
+{
+	int choice;
+	Testing op;
+	cout<<"		LEETCODE ARRAYS AND STRINGS EXERCISE     \n";
+	cout<<" Choose the exercise to execute and display output : \n";
+	cout<<" 1. Product of Array Except Self\n";
+	cout<<" 2. Spiral Matrix\n";
+	cout<<" 3. 4Sum II\n";
+	cout<<" 0. Exit\n";
+	cout<<" Enter your choice: ";
+	cin>>choice;
+	if (choice == 0)
+	{
+		cout<<"Thank you for using this code!!!\n";
+		return 0;
+	}
+
+	op.ExecuteOperation(choice);
+	return 0;
+}
