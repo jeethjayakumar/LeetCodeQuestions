@@ -130,3 +130,39 @@ int Solution::fourSumCount(vector<int>& num1, vector<int>& num2, vector<int>& nu
 
 	return count;
 }
+
+/*
+ * Given an integer array height of length n. Find two lines that together with the x-axis form a container, such that the container contains the most water.
+ * Return the maximum amount of water a container can store.
+ * Example 1:
+ * Input: height = [1,8,6,2,5,4,8,3,7]
+ * Output: 49
+ *
+ * Solution Implemented: Iterate the height list from both end and compare the heights. If the height at the beg position is < height at end position,
+ * then move the index at the lower height end.
+ *
+ */
+int Solution::calcuteAreaContainingMostWater(vector<int>& height)
+{
+	int max_area = 0, area = 0;
+	int left = 0, right = height.size() - 1;
+
+	while(left < right)
+	{
+		if(height[left] < height[right])
+		{
+			area = height[left] * (right - left);
+			if (area > max_area)
+				max_area = area;
+			left ++;
+		}
+		else
+		{
+			area = height[right] * (right - left);
+			if (area > max_area)
+				max_area = area;
+			right --;
+		}
+	}
+	return max_area;
+}
