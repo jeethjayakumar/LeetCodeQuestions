@@ -13,6 +13,16 @@ void Solution::DisplayList(ListNode* head)
 	}
 }
 
+/*
+ * Given an array of k linked-lists lists where each linked-list is sorted in ascending order, Merge all the linked-lists into one sorted linked-list and return it.
+ * Example 1:
+ * Input: lists = [[1,4,5],[1,3,4],[2,6]]
+ * Output: [1,1,2,3,4,4,5,6]
+ *
+ * Solution Implemented: Approach taken is similar to merge sort and multiple recursion. MergeSort approach was used to traverse through the list of linked list.
+ * This will avoid going through list in multiple loops thereby avoiding O(n^2) time complexity.
+ *
+ */
 ListNode* Solution::mergeTwoLists(ListNode* left, ListNode* right)
 {
 	if (!left) return right;
@@ -48,3 +58,37 @@ ListNode* Solution::mergeKLists(vector<ListNode*>& inpList)
 	
 	return mergeKListHelper(inpList, 0, inpList.size() - 1);
 }
+
+/*
+ *
+ *
+ */
+ListNode* Solution::getMid(ListNode* head)
+{
+	ListNode* slow = head;
+	ListNode* fast = head->next;
+
+	while(fast && fast->next)
+	{
+		slow = slow->next;
+		fast = fast->next->next;
+	}
+
+	return slow;
+}
+
+ListNode* Solution::mergeSort(ListNode* head)
+{
+	if (!head || !head->next) return head;
+
+	ListNode* mid = getMid(head);
+	ListNode* left = head;
+	ListNode* right = mid->next;
+	mid->next = nullptr;
+
+	left = mergeSort(left);
+	right = mergeSort(right);
+
+	return mergeTwoLists(left, right);
+}
+

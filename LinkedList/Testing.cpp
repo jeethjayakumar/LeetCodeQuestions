@@ -8,6 +8,9 @@ void Testing::ExecuteOperation(int& choice)
 		case 1:
 			TestingMergeKSortedList(op);
 			break;
+		case 2:
+			TestingSortList(op);
+			break;
 		default:
 			cout<<"No operations found with that choice!!!\n";
 			break;

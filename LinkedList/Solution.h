@@ -8,7 +8,9 @@ class Solution
 	private:
 		ListNode* mergeKListHelper(vector<ListNode*>& lists, int start, int end);
 		ListNode* mergeTwoLists(ListNode* left, ListNode* right);
+		ListNode* getMid(ListNode* head);
 	public:
 		ListNode* mergeKLists(vector<ListNode*>& lists);
+		ListNode* mergeSort(ListNode* head);
 		void DisplayList(ListNode* head);
 };

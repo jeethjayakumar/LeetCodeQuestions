@@ -9,3 +9,4 @@ class Testing
 };
 
 void TestingMergeKSortedList(Solution& op);
+void TestingSortList(Solution& op);

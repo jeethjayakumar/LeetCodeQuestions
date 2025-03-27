@@ -8,6 +8,7 @@ int main()
 	cout<<"		LEETCODE LINKED LIST EXERCISE		\n";
 	cout<<" Choose the exercise to execute and display outpur : \n";
 	cout<<" 1. Merge K Sorted Lists \n";
+	cout<<" 2. Sort List \n";
 	cout<<" 0. Exit\n";
 	cout<<" Enter your choice: ";
 	cin>>choice;
