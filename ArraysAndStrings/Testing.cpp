@@ -19,6 +19,9 @@ void Testing::ExecuteOperation(int& choice)
 		case 5:
 			TestingGameOfLife(op);
 			break;
+		case 6:
+			TestingFirstMissingPositive(op);
+			break;
 		default:
 			cout<<"No operations found with that choice!!!\n";
 			break;

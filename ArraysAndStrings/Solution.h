@@ -11,4 +11,5 @@ class Solution
 		int fourSumCount(vector<int>& num1, vector<int>& num2, vector<int>& num3, vector<int>& num4);
 		int calcuteAreaContainingMostWater(vector<int>& height);
 		void gameOfLife(vector<vector<int> >& inp);
+		int firstMissingPositive(vector<int>& nums);
 };
