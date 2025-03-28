@@ -16,6 +16,9 @@ void Testing::ExecuteOperation(int& choice)
 		case 4:
 			TestingContainerWithMostWater(op);
 			break;
+		case 5:
+			TestingGameOfLife(op);
+			break;
 		default:
 			cout<<"No operations found with that choice!!!\n";
 			break;

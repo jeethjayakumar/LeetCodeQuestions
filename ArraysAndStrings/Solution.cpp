@@ -166,3 +166,64 @@ int Solution::calcuteAreaContainingMostWater(vector<int>& height)
 	}
 	return max_area;
 }
+
+/*
+ * The board is made up of an m x n grid of cells, where each cell has an initial state: 
+ * live (represented by a 1) or dead (represented by a 0). Each cell interacts with its eight neighbors (horizontal, vertical, diagonal)
+ * using the following four rules (taken from the above Wikipedia article):
+ * 1. Any live cell with fewer than two live neighbors dies as if caused by under-population.
+ * 2. Any live cell with two or three live neighbors lives on to the next generation.
+ * 3. Any live cell with more than three live neighbors dies, as if by over-population.
+ * 4. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+ * Given the current state of the board, update the board to reflect its next state.
+ *
+ * Solution Implemented: This is implemented similar to Spiral Order matrix exercise.
+ * We use separate array for tracking direction to traverse when I'm on a cell and check if the population on the cell is alive or not.
+ *
+ */
+void Solution::gameOfLife(vector<vector<int> >& board)
+{
+	int nRow = board.size(), nCol = board[0].size();
+	vector<vector<bool> > changed(nRow, vector<bool>(nCol, false));
+	vector<int> nDirRow = {-1, -1, -1, 0, 1, 1,  1,  0};
+	vector<int> nDirCol = {-1,  0,  1, 1, 1, 0, -1, -1};
+
+	for(int i = 0; i < nRow; i++)
+	{
+		for(int j = 0; j < nCol; j++)
+		{
+			int cnt = 0;
+			for(int k = 0; k < nDirRow.size(); k++)
+			{
+				int newR = i + nDirRow[k];
+				int newC = j + nDirCol[k];
+				if(newR >= 0 && newR < nRow &&
+				   newC >= 0 && newC < nCol)
+				{
+					if(board[newR][newC] && !changed[newR][newC])
+						cnt++;
+					if(!board[newR][newC] && changed[newR][newC])
+						cnt++;
+				}
+
+			}
+			if (!board[i][j])
+			{
+				if (cnt == 3)
+				{
+					board[i][j] = 1;
+					changed[i][j] = true;
+				}
+			}
+			else
+			{
+				if (cnt < 2 || cnt > 3)
+				{
+					board[i][j] = 0;
+					changed[i][j] = true;
+				}
+
+			}
+		}
+	}
+}
