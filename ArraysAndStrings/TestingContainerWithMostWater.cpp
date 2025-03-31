@@ -4,16 +4,14 @@ void TestingContainerWithMostWater(Solution& op)
 {
 	vector<int> inp1 = {1,8,6,2,5,4,8,3,7};
 	cout<<"Inp1 wall height: ";
-	for(auto n : inp1)
-		cout<<n<<" ";
+	PrintInputList(inp1);
 	cout<<endl;
 	auto res = op.calcuteAreaContainingMostWater(inp1);
 	cout<<"Area containing most water = "<<res<<endl;
 
 	vector<int> inp2 = {1,1};
 	cout<<"Inp2 wall height: ";
-	for(auto n : inp2)
-		cout<<n<<" ";
+	PrintInputList(inp2);
 	cout<<endl;
 	res = op.calcuteAreaContainingMostWater(inp2);
 	cout<<"Area containing most water = "<<res<<endl;

@@ -7,8 +7,7 @@ void TestingSpiralMatrix(Solution& op)
 	cout<<"Input matrix: "<<endl;
 	for(int i = 0; i < ip1.size(); i++)
 	{
-		for(auto j : ip1[i])
-			cout<<j<<" ";
+		PrintInputList(ip1[i]);
 		cout<<endl;
 	}
 	cout<<"Result array: ";
@@ -21,12 +20,10 @@ void TestingSpiralMatrix(Solution& op)
 	cout<<"Input matrix: "<<endl;
 	for(int i = 0; i < ip2.size(); i++)
 	{
-		for(auto j : ip2[i])
-			cout<<j<<" ";
+		PrintInputList(ip2[i]);
 		cout<<endl;
 	}
 	cout<<"Result array: ";
-	for(auto i : res)
-		cout<<i<<" ";
+	PrintInputList(res);
 	cout<<endl;
 }

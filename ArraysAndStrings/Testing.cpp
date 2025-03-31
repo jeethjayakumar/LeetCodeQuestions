@@ -1,5 +1,11 @@
 #include "Testing.h"
 
+void PrintInputList(vector<int>& inp)
+{
+	for(auto n : inp)
+		cout<<n<<" ";
+}
+
 void Testing::ExecuteOperation(int& choice)
 {
 	switch(choice)
@@ -21,6 +27,9 @@ void Testing::ExecuteOperation(int& choice)
 			break;
 		case 6:
 			TestingFirstMissingPositive(op);
+			break;
+		case 7:
+			TestingLongestConsecutiveSequence(op);
 			break;
 		default:
 			cout<<"No operations found with that choice!!!\n";

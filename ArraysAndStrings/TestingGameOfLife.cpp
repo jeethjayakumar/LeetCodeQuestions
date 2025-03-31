@@ -4,8 +4,7 @@ void printMatrix(vector<vector<int> >& inp)
 {
 	for(auto l : inp)
 	{
-		for(auto n : l)
-			cout<<n<<" ";
+		PrintInputList(l);
 		cout<<endl;
 	}
 }
