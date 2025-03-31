@@ -1,5 +1,6 @@
 #include "Solution.h"
 #include <unordered_map>
+#include <set>
 
 /*
  * Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
@@ -261,4 +262,40 @@ int Solution::firstMissingPositive(vector<int>& nums)
 			return i;
 	}
 	return n+1;
+}
+
+/*
+ * Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
+ * You must write an algorithm that runs in O(n) time
+ *
+ * Solution implemented : First you iterate the list and put it in ordered container like set.
+ * When traversing through set, we see if prev item is one less than the current one. If yes then we increment the length.
+ * If not, we compare the length with maxLength and save the greatest value.
+ *
+ */
+int Solution::longestConsecutive(vector<int>& nums)
+{
+	set<int> orderedList(nums.begin(), nums.end());
+	int length = 1, maxLength = 0, prev = 0, count = 0;
+	for(auto it : orderedList)
+	{
+		if (count != 0)
+		{
+			if (it == (prev + 1))
+			{
+				length ++;
+			}
+			else
+			{
+				if (length > maxLength)
+					maxLength = length;
+				length = 1;
+			}
+		}
+		prev = it;
+		count ++;
+	}
+	if (length > maxLength)
+		maxLength = length;
+	return maxLength;
 }

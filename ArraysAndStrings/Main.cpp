@@ -12,6 +12,7 @@ int main()
 	cout<<" 4. Container with most water\n";
 	cout<<" 5. Game of life\n";
 	cout<<" 6. First Missing Positive\n";
+	cout<<" 7. Longest Consecutive Sequence\n";
 	cout<<" 0. Exit\n";
 	cout<<" Enter your choice: ";
 	cin>>choice;

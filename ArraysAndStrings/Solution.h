@@ -12,4 +12,5 @@ class Solution
 		int calcuteAreaContainingMostWater(vector<int>& height);
 		void gameOfLife(vector<vector<int> >& inp);
 		int firstMissingPositive(vector<int>& nums);
+		int longestConsecutive(vector<int>& nums);
 };
