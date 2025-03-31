@@ -13,6 +13,7 @@ int main()
 	cout<<" 5. Game of life\n";
 	cout<<" 6. First Missing Positive\n";
 	cout<<" 7. Longest Consecutive Sequence\n";
+	cout<<" 8. Find the duplicate number\n";
 	cout<<" 0. Exit\n";
 	cout<<" Enter your choice: ";
 	cin>>choice;

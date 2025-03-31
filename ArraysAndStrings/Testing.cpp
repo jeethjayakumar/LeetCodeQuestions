@@ -31,6 +31,9 @@ void Testing::ExecuteOperation(int& choice)
 		case 7:
 			TestingLongestConsecutiveSequence(op);
 			break;
+		case 8:
+			TestingFindTheDuplicateNumber(op);
+			break;
 		default:
 			cout<<"No operations found with that choice!!!\n";
 			break;

@@ -16,3 +16,4 @@ void TestingContainerWithMostWater(Solution& op);
 void TestingGameOfLife(Solution& op);
 void TestingFirstMissingPositive(Solution& op);
 void TestingLongestConsecutiveSequence(Solution& op);
+void TestingFindTheDuplicateNumber(Solution& op);

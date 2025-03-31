@@ -13,4 +13,5 @@ class Solution
 		void gameOfLife(vector<vector<int> >& inp);
 		int firstMissingPositive(vector<int>& nums);
 		int longestConsecutive(vector<int>& nums);
+		int findDuplicate(vector<int>& nums);
 };

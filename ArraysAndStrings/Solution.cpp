@@ -299,3 +299,34 @@ int Solution::longestConsecutive(vector<int>& nums)
 		maxLength = length;
 	return maxLength;
 }
+
+/*
+ * Given an array of integers nums containing n+1 integers where where each integer is in the range [1, n] inclusive, there is only one repeated number. 
+ * Return this repeated number.
+ * You must solve the problem without modifying the array nums and using only constant extra space.
+ *
+ * Solution implemented: A variation of binary search algorithm is implemented here. We know that size of the input array - 1 is the max number it may contain.
+ * We use that information as leverage to find the one duplicate number. Although this method will not be applicable if there are more than on integers that has duplicate.
+ * Time complexity here is O(nlogn)
+ *
+ */
+int Solution::findDuplicate(vector<int>& nums)
+{
+	int start = 0, end = nums.size() - 1, cnt =0, mid = 0;
+	while(start < end)
+	{
+		mid = start + (end - start)/2;
+		cnt = 0;
+		for(auto n : nums)
+		{
+			if(n <= mid)
+				cnt ++;
+		}
+
+		if (cnt > mid)
+			end = mid;
+		else
+			start = mid + 1;
+	}
+	return start;
+}
