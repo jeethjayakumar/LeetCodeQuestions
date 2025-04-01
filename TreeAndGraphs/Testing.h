@@ -9,4 +9,6 @@ class Testing
 
 };
 
+template<class T> void PrintInputMatrix(vector<vector<T> >& inp);
 void TestingWordLadder(Solution& op);
+void TestingSurroundedRegion(Solution& op);

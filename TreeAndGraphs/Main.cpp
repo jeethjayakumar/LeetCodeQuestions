@@ -8,6 +8,7 @@ int main()
 	cout<<"			LEETCODE EXERCISE - TREES AND GRAPHS		\n";
 	cout<<" Enter your choice of exercise to execute: \n";
 	cout<<"1. Word Ladder \n";
+	cout<<"2. Surrounded Region \n";
 	cout<<"0. Exit \n";
 	cout<<" Enter your choice: ";
 	cin>>choice;

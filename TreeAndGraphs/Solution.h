@@ -13,4 +13,5 @@ class Solution
 		int extendQueue(unordered_map<string, int>& CurrDir, unordered_map<string, int>& OppDir, queue<string>& CurrQueue, unordered_set<string>& words);
 	public:
 		int ladderLength(string beginWord, string endWord, vector<string>& wordList);
+		void solveSurroundedRegion(vector<vector<char> >& board);
 };
