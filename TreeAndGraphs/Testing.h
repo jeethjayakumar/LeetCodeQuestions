@@ -8,3 +8,5 @@ class Testing
 		void ExecuteOperation(int& choice);
 
 };
+
+void TestingWordLadder(Solution& op);
