@@ -1,6 +1,7 @@
 #include "Solution.h"
 #include <unordered_map>
 #include <set>
+#include<stack>
 
 /*
  * Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
@@ -329,4 +330,60 @@ int Solution::findDuplicate(vector<int>& nums)
 			start = mid + 1;
 	}
 	return start;
+}
+
+/*
+ * Given a string s which represents an expression, evaluate this expression and return its value. 
+ * You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval()
+ *
+ * Solution Implemented:
+ *
+ *
+ */
+int Solution::calculate(string s)
+{
+	stack<int> nStack;
+	int stSize = s.size();
+	int top = 0;
+	char prevOp='+';
+	int num = 0, res = 0;
+
+	for(int i = 0; i < stSize; i++)
+	{
+		if(isdigit(s[i]))
+			num = (num * 10) + (s[i] - '0');
+		if (i == stSize - 1 || (s[i] == '+') ||(s[i] == '-') || (s[i] == '*') || (s[i] == '/'))
+		{
+			if(!nStack.empty()) top = nStack.top();
+			switch(prevOp)
+			{
+				case '+':
+					nStack.push(num);
+					break;
+				case '-':
+					nStack.push(-num);
+					break;
+				case '*':
+					nStack.pop();
+					nStack.push(top * num);
+					break;
+				case '/':
+					nStack.pop();
+					nStack.push(top / num);
+					break;
+				default:
+					break;
+			}
+			prevOp = s[i];
+			num = 0;
+		}
+	}
+
+	while(!nStack.empty())
+	{
+		res += nStack.top();
+		nStack.pop();
+	}
+
+	return res;
 }

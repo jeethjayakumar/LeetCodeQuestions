@@ -34,6 +34,9 @@ void Testing::ExecuteOperation(int& choice)
 		case 8:
 			TestingFindTheDuplicateNumber(op);
 			break;
+		case 9:
+			TestingBasicCalculatorII(op);
+			break;
 		default:
 			cout<<"No operations found with that choice!!!\n";
 			break;

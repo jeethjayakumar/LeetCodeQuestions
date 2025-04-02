@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<string>
 
 using namespace std;
 
@@ -14,4 +15,5 @@ class Solution
 		int firstMissingPositive(vector<int>& nums);
 		int longestConsecutive(vector<int>& nums);
 		int findDuplicate(vector<int>& nums);
+		int calculate(string s);
 };

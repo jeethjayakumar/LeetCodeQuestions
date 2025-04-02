@@ -17,3 +17,4 @@ void TestingGameOfLife(Solution& op);
 void TestingFirstMissingPositive(Solution& op);
 void TestingLongestConsecutiveSequence(Solution& op);
 void TestingFindTheDuplicateNumber(Solution& op);
+void TestingBasicCalculatorII(Solution& op);

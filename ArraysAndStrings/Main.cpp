@@ -14,6 +14,7 @@ int main()
 	cout<<" 6. First Missing Positive\n";
 	cout<<" 7. Longest Consecutive Sequence\n";
 	cout<<" 8. Find the duplicate number\n";
+	cout<<" 9. Basic Calculator II\n";
 	cout<<" 0. Exit\n";
 	cout<<" Enter your choice: ";
 	cin>>choice;
