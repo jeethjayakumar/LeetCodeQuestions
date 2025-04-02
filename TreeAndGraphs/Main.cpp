@@ -9,6 +9,7 @@ int main()
 	cout<<" Enter your choice of exercise to execute: \n";
 	cout<<"1. Word Ladder \n";
 	cout<<"2. Surrounded Region \n";
+	cout<<"3. Lowest Common Ancestor of a Binary Tree \n";
 	cout<<"0. Exit \n";
 	cout<<" Enter your choice: ";
 	cin>>choice;

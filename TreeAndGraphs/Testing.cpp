@@ -28,6 +28,9 @@ void Testing::ExecuteOperation(int& choice)
 		case 2:
 			TestingSurroundedRegion(op);
 			break;
+		case 3:
+			TestingLowestCommonAncestorBTree(op);
+			break;
 		default:
 			cout<<"Invalid choice selected... Aborting...\n";
 			break;

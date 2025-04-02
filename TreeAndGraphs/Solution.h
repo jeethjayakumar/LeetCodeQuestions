@@ -4,6 +4,7 @@
 #include<unordered_map>
 #include<unordered_set>
 #include<queue>
+#include "TreeNode.h"
 
 using namespace std;
 
@@ -14,4 +15,5 @@ class Solution
 	public:
 		int ladderLength(string beginWord, string endWord, vector<string>& wordList);
 		void solveSurroundedRegion(vector<vector<char> >& board);
+		TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q);
 };
