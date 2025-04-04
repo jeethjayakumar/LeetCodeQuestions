@@ -387,3 +387,34 @@ int Solution::calculate(string s)
 
 	return res;
 }
+
+/*
+ * Given array of int nums and sliding window size k, return the max sliding window - array where each time we move the window by one position
+ * the highest element in the k numbers in the array should be displayed.
+ * Eg: inp = {1,3,-1, -3,5,3,6,7}, k=3, outp = {3,3,5,5,6,7}
+ *
+ * Solution Implemented: Here we use deque such that front insertion is always for indexes having greater value in a particular k window.
+ * Insertion of indices happens on backside of deque.
+ */
+vector<int> Solution::maxSlidingWindow(vector<int>& nums, int& k)
+{
+	vector<int> res;
+	deque<int> dq;
+
+	for(int i = 0; i < nums.size(); i++)
+	{
+		if(!dq.empty() && (i - k) >= dq.front())
+		{
+			dq.pop_front();
+		}
+
+		while(!dq.empty() && nums[dq.back()]<= nums[i])
+			dq.pop_back();
+		dq.push_back(i);
+		if (i >= k-1)
+			res.push_back(nums[dq.front()]);
+	}
+
+	return res;
+}
+

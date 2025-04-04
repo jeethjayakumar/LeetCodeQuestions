@@ -37,6 +37,9 @@ void Testing::ExecuteOperation(int& choice)
 		case 9:
 			TestingBasicCalculatorII(op);
 			break;
+		case 10:
+			TestingSlidingWindowMaximum(op);
+			break;
 		default:
 			cout<<"No operations found with that choice!!!\n";
 			break;

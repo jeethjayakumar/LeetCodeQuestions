@@ -16,4 +16,5 @@ class Solution
 		int longestConsecutive(vector<int>& nums);
 		int findDuplicate(vector<int>& nums);
 		int calculate(string s);
+		vector<int> maxSlidingWindow(vector<int>& nums, int& k);
 };
