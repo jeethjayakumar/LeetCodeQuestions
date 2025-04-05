@@ -10,6 +10,8 @@ int main()
 	cout<<"1. Word Ladder \n";
 	cout<<"2. Surrounded Region \n";
 	cout<<"3. Lowest Common Ancestor of a Binary Tree \n";
+	cout<<"4. Longest Increasing Path in a Matrix \n";
+	cout<<"5. Count of Smaller Numbers after self \n";
 	cout<<"0. Exit \n";
 	cout<<" Enter your choice: ";
 	cin>>choice;

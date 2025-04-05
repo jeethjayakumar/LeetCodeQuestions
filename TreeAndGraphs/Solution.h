@@ -16,4 +16,6 @@ class Solution
 		int ladderLength(string beginWord, string endWord, vector<string>& wordList);
 		void solveSurroundedRegion(vector<vector<char> >& board);
 		TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q);
+		int longestIncreasingPath(vector<vector<int> >& matrix);
+		vector<int> countSmaller(vector<int>& nums);
 };

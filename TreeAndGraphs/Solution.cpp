@@ -1,5 +1,7 @@
 #include "Solution.h"
-
+#include <functional>
+#include <set>
+#include <unordered_map>
 /*
  * Given two words, beginWord and endWord, and a dictionary wordList, return the number of words in the shortest transformation sequence from beginWord to endWord, or 0 if no such sequence exists.
  * Example: 
@@ -121,9 +123,12 @@ void Solution::solveSurroundedRegion(vector<vector<char> >& board)
 }
 
 /*
+ * Leetcode 236
+ * Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
+ * Example: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+ * Output = 3
  *
- *
- *
+ * Solution Implemented: Depth First Search. Time Complexity = O(log N)
  */
 TreeNode* Solution::lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q)
 {
@@ -135,4 +140,108 @@ TreeNode* Solution::lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* 
 	if (left == nullptr) return right;
 	else if (right == nullptr) return left;
 	else return root;
+}
+
+/*
+ * Leetcode 329
+ * Given an m x n integers matrix, return the length of the longest increasing path in matrix.
+ * From each cell, you can either move in four directions: left, right, up, or down. You may not move diagonally or move outside the boundary
+ * Example: matrix = [[9,9,4],[6,6,8],[2,1,1]]
+ * Output = 4
+ * Explanation: The longest increasing path is [1, 2, 6, 9]
+ *
+ * Solution Implemented: This is graph problem. We take DFS approach with additional step of saving prevCnt of previously recursed calls.
+ *
+ */
+int Solution::longestIncreasingPath(vector<vector<int> >& matrix)
+{
+	int m = matrix.size(), n = matrix[0].size();
+	int len = 0;
+	vector<vector<int> > cache(m, vector<int>(n, 0));
+	vector<int> dirn = {-1, 0, 1, 0, -1};
+	function<int(int, int)> dfs = [&](int r, int c) -> int
+	{
+		if (cache[r][c]) return cache[r][c];
+		for(int i = 0; i < 4; i++)
+		{
+			int newR = r + dirn[i];
+			int newC = c + dirn[i + 1];
+
+			if (newR < 0 || newR >= m || newC < 0 || newC >= n || matrix[newR][newC] <= matrix[r][c]) continue;
+
+			cache[r][c] = max(cache[r][c], dfs(newR, newC));
+		}
+
+		return ++cache[r][c];
+	};
+	
+	for(int i = 0; i < m; i++)
+	{
+		for(int j = 0; j < n; j++)
+		{
+			len = 0;
+			cout<<"matrix["<<i<<"]["<<j<<"] = "<<matrix[i][j]<<endl;
+			len = max(len, dfs(i, j));
+		}
+	}
+
+	return len;
+}
+
+/*
+ * Leetcode 315
+ * Given an integer array nums, return an integer array counts where counts[i] is the number of smaller elements to the right of nums[i].
+ * Example: Input = [5,2,6,1]
+ * Output = [2,1,1,0]
+ * 
+ * Solution implemented: Simplest approach to take here is brute force method which will take O(N^2) time complexity.
+ * But this approach will not work with larger input set as it takes too much time. 
+ * Optimized version of implementing this problem will be to use the concept of Fenwick tree or Binary Index tree.
+ * First we identify unique elements in the input and arrange them in ascendign order.
+ * Then we use a ranking map to assign ranks for each values of sorted unique input elements. This will be the input for our binary index tree array
+ * Each time we traverse through input array backwards, we find the rank of the elements and update the binary index tree. We will also use this tree
+ * to query the count.
+ * Time complexity of this appraoch : O(N*logN)
+ * Space Complexity : O(N)
+ */
+
+void updateBTArray(vector<int>& btArray, int index, int delta)
+{
+	for(; index < btArray.size(); index += (index & -index))
+	{
+		btArray[index] += delta;
+	}
+}
+
+int queryBTArray(vector<int>& btArray, int index)
+{
+	int sum = 0;
+	for(; index > 0; index -=(index & -index))
+	{
+		sum += btArray[index];
+	}
+
+	return sum;
+}
+
+vector<int> Solution::countSmaller(vector<int>& nums)
+{
+	vector<int> count(nums.size(), 0);
+	set<int> element(nums.begin(), nums.end());
+	unordered_map<int, int> ranks;
+	vector<int> btArray(element.size() + 1, 0);
+	int counter = 0;
+
+	for(auto it: element)
+	{
+		ranks[it] = ++counter;
+	}
+	
+	for(int i = nums.size()-1; i >=0; i--)
+	{
+		int rank = ranks[nums[i]];
+		updateBTArray(btArray, rank, 1);
+		count[i] = queryBTArray(btArray, rank - 1);
+	}
+	return count;
 }

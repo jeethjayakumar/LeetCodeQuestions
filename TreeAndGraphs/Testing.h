@@ -13,3 +13,5 @@ template<class T> void PrintInputMatrix(vector<vector<T> >& inp);
 void TestingWordLadder(Solution& op);
 void TestingSurroundedRegion(Solution& op);
 void TestingLowestCommonAncestorBTree(Solution& op);
+void TestingLongestIncreasingPathMatrix(Solution& op);
+void TestingCountOfSmallNumbersAfterSelf(Solution& op);

@@ -31,6 +31,12 @@ void Testing::ExecuteOperation(int& choice)
 		case 3:
 			TestingLowestCommonAncestorBTree(op);
 			break;
+		case 4:
+			TestingLongestIncreasingPathMatrix(op);
+			break;
+		case 5:
+			TestingCountOfSmallNumbersAfterSelf(op);
+			break;
 		default:
 			cout<<"Invalid choice selected... Aborting...\n";
 			break;
