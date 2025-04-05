@@ -17,4 +17,5 @@ class Solution
 		int findDuplicate(vector<int>& nums);
 		int calculate(string s);
 		vector<int> maxSlidingWindow(vector<int>& nums, int& k);
+		string minWindow(string s, string t);
 };

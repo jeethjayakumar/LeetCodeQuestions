@@ -40,6 +40,9 @@ void Testing::ExecuteOperation(int& choice)
 		case 10:
 			TestingSlidingWindowMaximum(op);
 			break;
+		case 11:
+			TestingMinimumWindowSubstring(op);
+			break;
 		default:
 			cout<<"No operations found with that choice!!!\n";
 			break;

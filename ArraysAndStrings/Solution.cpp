@@ -1,8 +1,8 @@
 #include "Solution.h"
 #include <unordered_map>
 #include <set>
-#include<stack>
-
+#include <stack>
+#include <climits>
 /*
  * Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
  * You must write an algorithm that runs in O(n) time and without using the division operation.
@@ -418,3 +418,46 @@ vector<int> Solution::maxSlidingWindow(vector<int>& nums, int& k)
 	return res;
 }
 
+/*
+ * LeetCode 76
+ * Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that every character in t (including duplicates)
+ * is included in the window. If there is no such substring, return the emptry string.
+ * Eg: s = "ADOBECODEBANC", t = "ABC"
+ * Output: "BANC"
+ * Explanation: The minimum window substring "BANC" includes 'A', 'B', and 'C' from string t.
+ *
+ * Solution implemented: First we track characters in string t and its occurances. Then we traverse through each characters in string s.
+ * On each s traversal, we track the character occurances in separate array. Each time if a character in s is found in t then a match is found and match is increment.
+ * That will be the starting point of the substring in s and a separate loop will be executed till match value becomes length of t.
+ * Time complexity : O(len(s) * len(t))
+ */
+string Solution::minWindow(string s, string t)
+{
+	vector<int> tNeeded(128, 0), sHave(128, 0); // Total ASCII Characters to track counter
+	int minStart = -1, minLen = INT_MAX, start = 0, matches = 0;
+
+	for(auto c : t)
+		tNeeded[c]++;
+
+	for(int i = 0; i < s.length(); i++)
+	{
+		sHave[s[i]]++;
+		if(tNeeded[s[i]] >= sHave[s[i]])
+			matches++;
+		while(matches == t.length())
+		{
+			if((i - start + 1) < minLen)
+			{
+				minLen = i - start + 1;
+				minStart = start;
+			}
+
+			if (tNeeded[s[start]] >= sHave[s[start]])
+				matches--;
+			sHave[s[start]]--;
+			start++;
+		}
+	}
+
+	return minStart < 0 ? "" : s.substr(minStart, minLen);
+}

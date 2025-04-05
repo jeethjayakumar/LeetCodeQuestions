@@ -19,3 +19,4 @@ void TestingLongestConsecutiveSequence(Solution& op);
 void TestingFindTheDuplicateNumber(Solution& op);
 void TestingBasicCalculatorII(Solution& op);
 void TestingSlidingWindowMaximum(Solution& op);
+void TestingMinimumWindowSubstring(Solution& op);
