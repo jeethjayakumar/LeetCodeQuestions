@@ -1,4 +1,4 @@
-#include "ListNode.h"
+#include "NewListNode.h"
 #include <vector>
 
 using namespace std;
@@ -12,5 +12,6 @@ class Solution
 	public:
 		ListNode* mergeKLists(vector<ListNode*>& lists);
 		ListNode* mergeSort(ListNode* head);
+		NewListNode* copyRandomList(NewListNode* head);
 		void DisplayList(ListNode* head);
 };

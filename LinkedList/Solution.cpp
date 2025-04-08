@@ -14,6 +14,7 @@ void Solution::DisplayList(ListNode* head)
 }
 
 /*
+ * Leetcode 23
  * Given an array of k linked-lists lists where each linked-list is sorted in ascending order, Merge all the linked-lists into one sorted linked-list and return it.
  * Example 1:
  * Input: lists = [[1,4,5],[1,3,4],[2,6]]
@@ -60,7 +61,7 @@ ListNode* Solution::mergeKLists(vector<ListNode*>& inpList)
 }
 
 /*
- *
+ * Leetcode 148
  *
  */
 ListNode* Solution::getMid(ListNode* head)
@@ -92,3 +93,43 @@ ListNode* Solution::mergeSort(ListNode* head)
 	return mergeTwoLists(left, right);
 }
 
+/*
+ * Leetcode 138
+ *
+ */
+NewListNode* Solution::copyRandomList(NewListNode* head)
+{
+	if (!head) return nullptr;
+	
+	NewListNode* curr = head;
+	while(curr != nullptr)
+	{
+		NewListNode* newNode = new NewListNode(curr->val);
+		newNode->next = curr->next;
+		curr->next = newNode;
+		curr = (NewListNode*)newNode->next;
+	}
+
+	curr = head;
+	while(curr != nullptr)
+	{
+		if (curr->random != nullptr)
+			(NewListNode*)(curr->next)->random = (NewListNode*)curr->random->next;
+		curr = (NewListNode*)curr->next->next;
+	}
+
+	NewListNode* newHead = (NewListNode*)head->next;
+	curr = head;
+	NewListNode* newCurr;
+	while(curr != nullptr)
+	{
+		newCurr = (NewListNode*)curr->next;
+		curr->next = (NewListNode*)newCurr->next;
+		if (curr->next != nullptr)
+			newCurr->next = (NewListNode*)curr->next->next;
+		else
+			newCurr->next = nullptr;
+		curr = (NewListNode*)curr->next;
+	}
+	return newHead;
+}
