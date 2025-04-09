@@ -12,6 +12,7 @@ int main()
 	cout<<"3. Lowest Common Ancestor of a Binary Tree \n";
 	cout<<"4. Longest Increasing Path in a Matrix \n";
 	cout<<"5. Count of Smaller Numbers after self \n";
+	cout<<"6. Binary Ttree Maximum Path Sum \n";
 	cout<<"0. Exit \n";
 	cout<<" Enter your choice: ";
 	cin>>choice;

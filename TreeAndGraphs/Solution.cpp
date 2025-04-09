@@ -2,6 +2,8 @@
 #include <functional>
 #include <set>
 #include <unordered_map>
+#include <climits>
+
 /*
  * Given two words, beginWord and endWord, and a dictionary wordList, return the number of words in the shortest transformation sequence from beginWord to endWord, or 0 if no such sequence exists.
  * Example: 
@@ -244,4 +246,33 @@ vector<int> Solution::countSmaller(vector<int>& nums)
 		count[i] = queryBTArray(btArray, rank - 1);
 	}
 	return count;
+}
+
+/*
+ * LeetCode 124
+ * Given the root of a binary tree, return the maximum path sum of any non-empty path
+ * Example: root = [-10,9,20,null,null,15,7]
+ * Output = 42
+ * Explanation: The optimal path is 15 -> 20 -> 7 with a path sum of 15 + 20 + 7 = 42.
+ *
+ * Solution Implemented - DFS
+ * Time Complexity : O(n), Space Complexity: O(h)  where h is the height of the tree.
+ */
+int Solution::maxPathSum(TreeNode* head)
+{
+	int maxSum = INT_MIN;
+
+	function<int(TreeNode*)> DFS = [&](TreeNode* node)
+	{
+		if(!node) return 0;
+
+		int left = max(0, DFS(node->left));
+		int right = max(0, DFS(node->right));
+
+		maxSum = max(maxSum, left + right + node->val);
+		return node->val + max(left, right);
+	};
+
+	DFS(head);
+	return maxSum;
 }

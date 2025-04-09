@@ -1,12 +1,15 @@
 #include "Testing.h"
 
+/*
 void PrintTree(TreeNode* root, string indent, bool isLeft)
 {
 	if(!root) return;
+	cout<<"JJ: Inside PrintTree( root = "<< root->val<<", indent = "<<indent<<", isLeft = "<<isLeft<<endl;
 	cout<<indent<<"|__"<<root->val<<endl;
 	PrintTree(root->right, indent+(isLeft ? "|  ":"  "), true);
 	PrintTree(root->left , indent+(isLeft ? "|  ":"  "), false);
 }
+*/
 
 void TestingLowestCommonAncestorBTree(Solution& op)
 {

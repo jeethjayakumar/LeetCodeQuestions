@@ -18,6 +18,14 @@ void PrintInputMatrix(vector<vector<T> >& inp)
 	}
 }
 
+void PrintTree(TreeNode* root, string indent, bool isLeft)
+{
+	if(!root) return;
+	cout<<indent<<"|__"<<root->val<<endl;
+	PrintTree(root->right, indent+(isLeft ? "|  ":"  "), true);
+	PrintTree(root->left , indent+(isLeft ? "|  ":"  "), false);
+}
+
 void Testing::ExecuteOperation(int& choice)
 {
 	switch(choice)
@@ -36,6 +44,9 @@ void Testing::ExecuteOperation(int& choice)
 			break;
 		case 5:
 			TestingCountOfSmallNumbersAfterSelf(op);
+			break;
+		case 6:
+			TestingBinaryTreeMaximumPathSum(op);
 			break;
 		default:
 			cout<<"Invalid choice selected... Aborting...\n";

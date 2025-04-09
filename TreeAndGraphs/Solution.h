@@ -18,4 +18,5 @@ class Solution
 		TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q);
 		int longestIncreasingPath(vector<vector<int> >& matrix);
 		vector<int> countSmaller(vector<int>& nums);
+		int maxPathSum(TreeNode* root);
 };
