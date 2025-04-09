@@ -107,15 +107,15 @@ NewListNode* Solution::copyRandomList(NewListNode* head)
 		NewListNode* newNode = new NewListNode(curr->val);
 		newNode->next = curr->next;
 		curr->next = newNode;
-		curr = (NewListNode*)newNode->next;
+		curr = static_cast<NewListNode*>(newNode->next);
 	}
 
 	curr = head;
 	while(curr != nullptr)
 	{
 		if (curr->random != nullptr)
-			(NewListNode*)(curr->next)->random = (NewListNode*)curr->random->next;
-		curr = (NewListNode*)curr->next->next;
+			static_cast<NewListNode*>(curr->next)->random = static_cast<NewListNode*>(curr->random->next);
+		curr = static_cast<NewListNode*>(curr->next->next);
 	}
 
 	NewListNode* newHead = (NewListNode*)head->next;
@@ -123,13 +123,13 @@ NewListNode* Solution::copyRandomList(NewListNode* head)
 	NewListNode* newCurr;
 	while(curr != nullptr)
 	{
-		newCurr = (NewListNode*)curr->next;
-		curr->next = (NewListNode*)newCurr->next;
+		newCurr = static_cast<NewListNode*>(curr->next);
+		curr->next = newCurr->next;
 		if (curr->next != nullptr)
-			newCurr->next = (NewListNode*)curr->next->next;
+			newCurr->next = static_cast<NewListNode*>(curr->next->next);
 		else
 			newCurr->next = nullptr;
-		curr = (NewListNode*)curr->next;
+		curr = static_cast<NewListNode*>(curr->next);
 	}
 	return newHead;
 }
