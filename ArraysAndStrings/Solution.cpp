@@ -3,6 +3,7 @@
 #include <set>
 #include <stack>
 #include <climits>
+#include <queue>
 /*
  * Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
  * You must write an algorithm that runs in O(n) time and without using the division operation.
@@ -54,41 +55,78 @@ vector<int> Solution::DisplayProductExceptSelf(vector<int>& nums)
  *  Solution implemented: This would require definition of directions a cell can go (row-wise and column-wise) and visited table to identify if a specific cell has been visited or not.
  *
  */
-vector<int> Solution::DisplaySpiralOrder(vector<vector<int> >& matrix)
-{
-	vector<int> dr = {0, 1, 0, -1};
-	vector<int> dc = {1, 0, -1, 0};
-	int rSize = matrix.size();
-	int cSize = matrix[0].size();
-	vector<int> res(rSize * cSize);
-	vector<vector<bool> > visited(rSize, vector<bool>(cSize, false));
+//vector<int> Solution::DisplaySpiralOrder(vector<vector<int> >& matrix)
+//{
+//	vector<int> dr = {0, 1, 0, -1};
+//	vector<int> dc = {1, 0, -1, 0};
+//	int rSize = matrix.size();
+//	int cSize = matrix[0].size();
+//	vector<int> res(rSize * cSize);
+//	vector<vector<bool> > visited(rSize, vector<bool>(cSize, false));
+//
+//	int r = 0, c = 0, idx = 0;
+//
+//	for(int i = 0; i < rSize*cSize; i++)
+//	{
+//		res[i] = matrix[r][c];
+//		visited[r][c] = true;
+//		int newR = r + dr[idx];
+//		int newC = c + dc[idx];
+//
+//		if (newR >= 0 && newR < rSize &&
+//		    newC >= 0 && newC < cSize &&
+//		    !visited[newR][newC])
+//		{
+//			r = newR;
+//			c = newC;
+//		}
+//		else
+//		{
+//			idx = (idx + 1) % 4;
+//			r = r + dr[idx];
+//			c = c + dc[idx];
+//		}
+//	}
+//	
+//	return res;
+    vector<int> Solution::DisplaySpiralOrder(vector<vector<int> >& matrix)
+    {
+        int rSize = matrix.size();
+        if (rSize == 0) return {};
+        int cSize = matrix[0].size();
+        vector<int> res;
+        res.reserve(rSize * cSize);
 
-	int r = 0, c = 0, idx = 0;
+        int top = 0, bottom = rSize - 1, left = 0, right = cSize - 1;
 
-	for(int i = 0; i < rSize*cSize; i++)
-	{
-		res[i] = matrix[r][c];
-		visited[r][c] = true;
-		int newR = r + dr[idx];
-		int newC = c + dc[idx];
+        while (top <= bottom && left <= right)
+        {
+            for (int j = left; j <= right; ++j)
+                res.push_back(matrix[top][j]);
+            ++top;
 
-		if (newR >= 0 && newR < rSize &&
-		    newC >= 0 && newC < cSize &&
-		    !visited[newR][newC])
-		{
-			r = newR;
-			c = newC;
-		}
-		else
-		{
-			idx = (idx + 1) % 4;
-			r = r + dr[idx];
-			c = c + dc[idx];
-		}
-	}
-	
-	return res;
-}
+            for (int i = top; i <= bottom; ++i)
+                res.push_back(matrix[i][right]);
+            --right;
+
+            if (top <= bottom)
+            {
+                for (int j = right; j >= left; --j)
+                    res.push_back(matrix[bottom][j]);
+                --bottom;
+            }
+
+            if (left <= right)
+            {
+                for (int i = bottom; i >= top; --i)
+                    res.push_back(matrix[i][left]);
+                ++left;
+            }
+        }
+
+        return res;
+    }
+//}
 
 /*
  * Given four integer arrays nums1, nums2, nums3, and nums4 all of length n, return the number of tuples (i, j, k, l) such that:
@@ -460,4 +498,100 @@ string Solution::minWindow(string s, string t)
 	}
 
 	return minStart < 0 ? "" : s.substr(minStart, minLen);
+}
+
+/*
+ * LeetCode 215
+ * Given an array arr[] and an integer k, the task is to find k largest elements in the given array. Elements in the output array should be in decreasing order.
+ * Example:
+ * Input:  [1, 23, 12, 9, 30, 2, 50], k = 3
+ * Output: [50, 30, 23]
+ * 
+ * Solution Implemented: Used priority_queue to populate and identify largest elements.
+ * Time Complexity : O(n log K)
+*/
+
+vector<int> Solution::findKLargestElements(vector<int>& inp, int& k)
+{
+	priority_queue<int, vector<int>, greater<int> > minH(inp.begin(), inp.begin() + k);
+
+	for (int i = k; i < inp.size(); i++)
+	{
+		if (minH.top() < inp[i])
+		{
+			minH.pop();
+			minH.push(inp[i]);
+		}
+	}
+
+	vector<int> res;
+	while (!minH.empty())
+	{
+		res.push_back(minH.top());
+		minH.pop();
+	}
+	return res;
+}
+
+/*
+ *	Amazon Interview Question:
+ *  Given input list of strings words = {} and prefix = "", return list of strings from the words list that starts with prefix
+ *  Note: words list can be big list and each time when user types prefix, this method should return the results in optimal time.
+ *  Example :
+ *  Input : words = {"apple", "book", "banana", "bathroom", "batman", "cat", "batman"}
+ *  Prefix = "bat"
+ *  Output = "bathroom", "batman"
+ */
+void Trie::insert(const string& word)
+{
+	TrieNode* node = root;
+	for (char c : word)
+	{
+		if (!node->children[c])
+			node->children[c] = new TrieNode();
+		node = node->children[c];
+	}
+	node->isWord = true;
+}
+
+void Trie::dfs(TrieNode* node, const string& prefix, vector<string>& res)
+{
+	if (node->isWord)
+		res.push_back(prefix);
+
+	for (auto& [ch, child] : node->children)
+	{
+		dfs(child, prefix + ch, res);
+	}
+}
+
+vector<string> Trie::startsWith(const string& prefix)
+{
+	vector<string> res;
+	TrieNode* node = root;
+
+	for (char c : prefix)
+	{
+		if (!node->children.count(c))
+			return res;
+
+		node = node->children[c];
+	}
+
+	dfs(node, prefix,res);
+
+	return res;
+}
+
+vector<string> Solution::FindStringsForPrefix(vector<string>& words, const string& prefix)
+{
+	Trie trie;
+
+	for (auto& w : words)
+	{
+		trie.insert(w);
+	}
+
+	auto res = trie.startsWith(prefix);
+	return res;
 }

@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<string>
+#include<unordered_map>
 
 using namespace std;
 
@@ -18,4 +19,32 @@ class Solution
 		int calculate(string s);
 		vector<int> maxSlidingWindow(vector<int>& nums, int& k);
 		string minWindow(string s, string t);
+		vector<int> findKLargestElements(vector<int>& inp, int& k);
+		vector<string> FindStringsForPrefix(vector<string>& words, const string& prefix);
+};
+
+// This Trie Structure is defined for FindStringsForPrefix Solution. Not made generic to others
+struct TrieNode
+{
+	unordered_map<char, TrieNode* > children;
+	bool isWord = false;
+};
+
+class Trie
+{
+	TrieNode* root;
+public:
+	Trie()
+	{
+		root = new TrieNode();
+	}
+
+	~Trie()
+	{
+		delete root;
+	}
+
+	void insert(const string& word);
+	void dfs(TrieNode* node, const string& prefix, vector<string>& res);
+	vector<string> startsWith(const string& prefix);
 };

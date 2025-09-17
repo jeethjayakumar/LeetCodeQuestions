@@ -43,6 +43,9 @@ void Testing::ExecuteOperation(int& choice)
 		case 11:
 			TestingMinimumWindowSubstring(op);
 			break;
+		case 12:
+			TestingPrefixSearch(op);
+			break;
 		default:
 			cout<<"No operations found with that choice!!!\n";
 			break;
