@@ -46,6 +46,12 @@ void Testing::ExecuteOperation(int& choice)
 		case 12:
 			TestingPrefixSearch(op);
 			break;
+		case 13:
+			TestingMaxSubArraySumWithOneDeletion(op);
+			break;
+		case 14:
+			TestingFirstUniqueCharacter(op);
+			break;
 		default:
 			cout<<"No operations found with that choice!!!\n";
 			break;

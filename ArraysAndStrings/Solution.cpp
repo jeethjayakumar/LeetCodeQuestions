@@ -595,3 +595,98 @@ vector<string> Solution::FindStringsForPrefix(vector<string>& words, const strin
 	auto res = trie.startsWith(prefix);
 	return res;
 }
+
+/*
+ * Leetcode 1186
+ * Kadane's algorithm variation.
+ * Given an array of integers, return the maximum sum of a non-empty subarray (contiguous elements) with at most one element deletion.
+ * Example :
+ *    Input: arr = [1,-2,0,3], Output: 4
+ *    Explanation: Because we can choose [-2] and delete it, the subarray [1,0,3] has maximum sum 4.
+ *	  Input: arr = [1,-2,-2,3], Output: 3
+ *	  Explanation: We just choose [3] and it's the maximum sum.
+ * 
+ * Time Complexity of Solution implemented : O(n)
+ * Space Complexity : O(1)
+ */
+int Solution::maximumSum(vector<int>& nums)
+{
+	int res = nums[0];
+	int nd = nums[0];
+	int od = INT_MIN;
+	for (int i = 1; i < nums.size(); i++)
+	{
+		od = max(nd, od == INT_MIN ? INT_MIN : od + nums[i]);
+		nd = max(nums[i], nd + nums[i]);
+		res = max(res, max(od, nd));
+	}
+
+	return res;
+}
+
+/*
+ *
+ */
+
+// Time Complxity : O(n); Space Complexity = O(n)
+int maxWaterTrappedSolution1(vector<int>& inp)
+{
+	int inpSize = inp.size();
+	vector<int> leftM(inpSize), rightM(inpSize);
+	int sum = 0;
+	leftM[0] = inp[0];
+	rightM[inpSize - 1] = inp[inpSize - 1];
+	for (int i = 1; i < inpSize; i++)
+	{
+		leftM[i] = max(leftM[i - 1], inp[i]);
+	}
+	for (int i = inpSize -2 ; i > 0; i--)
+	{
+		rightM[i] = max(rightM[i + 1], inp[i]);
+	}
+	for (int i = 0; i < inpSize; i++)
+	{
+		sum += min(leftM[i], rightM[i]) - inp[i];
+	}
+	return sum;
+}
+
+// More Optimal Solution; Time Complexity - O(n); Space Complexity - O(1)
+int maxWaterTrappedSolution2(vector<int>& inp)
+{
+	int l = 0, r = inp.size() - 1, lMax = 0, rMax = 0, sum = 0;
+	while (l < r)
+	{
+		if (inp[l] < inp[r])
+		{
+			if (inp[l] >= lMax) lMax = inp[l];
+			else sum += (lMax - inp[l]);
+			l++;
+		}
+		else
+		{
+			if (inp[r] >= rMax) rMax = inp[r];
+			else sum += (rMax - inp[r]);
+			r--;
+		}
+	}
+	return sum;
+}
+
+/*
+ *  LeetCode 387
+ *  First Unique Character in a string
+ */
+int Solution::firstUniqChar(string& s)
+{
+	int f[256] = { 0 };
+	for (auto c : s)
+	{
+		f[c]++;
+	}
+	for (int i = 0; i < s.length(); i++)
+	{
+		if (f[s[i]] == 1) return i;
+	}
+	return -1;
+}

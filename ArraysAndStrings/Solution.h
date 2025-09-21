@@ -21,6 +21,8 @@ class Solution
 		string minWindow(string s, string t);
 		vector<int> findKLargestElements(vector<int>& inp, int& k);
 		vector<string> FindStringsForPrefix(vector<string>& words, const string& prefix);
+		int maximumSum(vector<int>& nums);
+		int firstUniqChar(string& s);
 };
 
 // This Trie Structure is defined for FindStringsForPrefix Solution. Not made generic to others

@@ -17,7 +17,9 @@ int main()
 	cout<<" 9. Basic Calculator II\n";
 	cout<<" 10. Sliding Window Maximum\n";
 	cout<<" 11. Minimum Window Substring\n";
-	cout <<" 12. Find string from prefix\n";
+	cout<<" 12. Find string from prefix\n";
+	cout<<" 13. Max Sub-array sum with atmost 1 element deletion\n";
+	cout<<" 14. First Unique Character in a string\n";
 	cout<<" 0. Exit\n";
 	cout<<" Enter your choice: ";
 	cin>>choice;

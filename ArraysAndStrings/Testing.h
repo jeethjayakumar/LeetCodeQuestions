@@ -21,3 +21,5 @@ void TestingBasicCalculatorII(Solution& op);
 void TestingSlidingWindowMaximum(Solution& op);
 void TestingMinimumWindowSubstring(Solution& op);
 void TestingPrefixSearch(Solution& op);
+void TestingMaxSubArraySumWithOneDeletion(Solution& op);
+void TestingFirstUniqueCharacter(Solution& op);
