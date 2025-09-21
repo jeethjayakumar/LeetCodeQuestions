@@ -690,3 +690,35 @@ int Solution::firstUniqChar(string& s)
 	}
 	return -1;
 }
+
+/*
+ * LeetCode 242
+ * Valid Anagram
+ */
+bool Solution::isAnagram(string& s, string& t)
+{
+	int f[256] = { 0 };
+	for (auto c : s) f[c]++;
+	for (auto c : t) f[c]--;
+	for (int i = 0; i < 256; i++)
+	{
+		if (f[i] != 0) return false;
+	}
+	return true;
+}
+
+/*
+ * LeetCode 9
+ * Palindrome Number
+ */
+bool Solution::isPalindrome(int& x)
+{
+	if (x < 0 || (x % 10 == 0 && x != 0)) return false;
+	int tmpX = x, revX = 0;
+	while (tmpX != 0)
+	{
+		revX = (revX * 10) + (tmpX % 10);
+		tmpX = tmpX / 10;
+	}
+	return x == revX;
+}

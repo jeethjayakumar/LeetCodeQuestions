@@ -23,3 +23,5 @@ void TestingMinimumWindowSubstring(Solution& op);
 void TestingPrefixSearch(Solution& op);
 void TestingMaxSubArraySumWithOneDeletion(Solution& op);
 void TestingFirstUniqueCharacter(Solution& op);
+void TestingValidAnagram(Solution& op);
+void TestingPalindromeNumber(Solution& op);

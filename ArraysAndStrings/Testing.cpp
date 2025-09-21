@@ -52,6 +52,12 @@ void Testing::ExecuteOperation(int& choice)
 		case 14:
 			TestingFirstUniqueCharacter(op);
 			break;
+		case 15:
+			TestingValidAnagram(op);
+			break;
+		case 16:
+			TestingPalindromeNumber(op);
+			break;
 		default:
 			cout<<"No operations found with that choice!!!\n";
 			break;

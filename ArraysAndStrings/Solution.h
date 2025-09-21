@@ -23,6 +23,8 @@ class Solution
 		vector<string> FindStringsForPrefix(vector<string>& words, const string& prefix);
 		int maximumSum(vector<int>& nums);
 		int firstUniqChar(string& s);
+		bool isAnagram(string& s, string& t);
+		bool isPalindrome(int& x);
 };
 
 // This Trie Structure is defined for FindStringsForPrefix Solution. Not made generic to others
