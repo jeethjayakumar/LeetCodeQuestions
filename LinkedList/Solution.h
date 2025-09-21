@@ -13,5 +13,6 @@ class Solution
 		ListNode* mergeKLists(vector<ListNode*>& lists);
 		ListNode* mergeSort(ListNode* head);
 		NewListNode* copyRandomList(NewListNode* head);
+		ListNode* reverseLinkedList(ListNode* head);
 		void DisplayList(ListNode* head);
 };

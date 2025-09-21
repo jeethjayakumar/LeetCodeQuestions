@@ -14,6 +14,9 @@ void Testing::ExecuteOperation(int& choice)
 		case 3:
 			TestingCopyListWithRandomPointer(op);
 			break;
+		case 4:
+			TestingReverseLinkedList(op);
+			break;
 		default:
 			cout<<"No operations found with that choice!!!\n";
 			break;

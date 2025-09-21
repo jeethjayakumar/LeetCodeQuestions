@@ -133,3 +133,22 @@ NewListNode* Solution::copyRandomList(NewListNode* head)
 	}
 	return newHead;
 }
+
+/*
+ * LeetCode 206 - Reverse a Linked List
+ * 
+ * Time Complexity O(n) Space Complexity O(1)
+ */
+ListNode* Solution::reverseLinkedList(ListNode* head)
+{
+	ListNode* curr = head, *prev = nullptr, *nxt = nullptr;
+	while (curr != nullptr)
+	{
+		nxt = curr->next;
+		curr->next = prev;
+		prev = curr;
+		curr = nxt;
+	}
+	head = prev;
+	return head;
+}

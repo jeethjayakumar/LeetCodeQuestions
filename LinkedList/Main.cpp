@@ -10,6 +10,7 @@ int main()
 	cout<<" 1. Merge K Sorted Lists \n";
 	cout<<" 2. Sort List \n";
 	cout<<" 3. Copy list with Random Pointer \n";
+	cout<<" 4. Reverse a linked list \n";
 	cout<<" 0. Exit\n";
 	cout<<" Enter your choice: ";
 	cin>>choice;
