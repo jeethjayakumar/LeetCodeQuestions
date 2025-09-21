@@ -13,6 +13,7 @@ int main()
 	cout<<"4. Longest Increasing Path in a Matrix \n";
 	cout<<"5. Count of Smaller Numbers after self \n";
 	cout<<"6. Binary Ttree Maximum Path Sum \n";
+	cout<<"7. Binary Tree Path \n";
 	cout<<"0. Exit \n";
 	cout<<" Enter your choice: ";
 	cin>>choice;

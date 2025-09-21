@@ -1,7 +1,7 @@
 #include "Testing.h"
 
 template<class T>
-void PrintInputList(vector<T>& inp)
+void PrintList(vector<T>& inp)
 {
 	for(auto item : inp)
 		cout<<item<<" ";
@@ -47,6 +47,9 @@ void Testing::ExecuteOperation(int& choice)
 			break;
 		case 6:
 			TestingBinaryTreeMaximumPathSum(op);
+			break;
+		case 7:
+			TestingBinaryTreePath(op);
 			break;
 		default:
 			cout<<"Invalid choice selected... Aborting...\n";

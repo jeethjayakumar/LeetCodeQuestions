@@ -12,6 +12,7 @@ class Solution
 {
 	private:
 		int extendQueue(unordered_map<string, int>& CurrDir, unordered_map<string, int>& OppDir, queue<string>& CurrQueue, unordered_set<string>& words);
+		void traverseForPath(TreeNode* root, string output, vector<string>& outputPath);
 	public:
 		int ladderLength(string beginWord, string endWord, vector<string>& wordList);
 		void solveSurroundedRegion(vector<vector<char> >& board);
@@ -19,4 +20,5 @@ class Solution
 		int longestIncreasingPath(vector<vector<int> >& matrix);
 		vector<int> countSmaller(vector<int>& nums);
 		int maxPathSum(TreeNode* root);
+		vector<string> binaryTreePath(TreeNode* root);
 };

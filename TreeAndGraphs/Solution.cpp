@@ -276,3 +276,53 @@ int Solution::maxPathSum(TreeNode* head)
 	DFS(head);
 	return maxSum;
 }
+
+/*
+ * LeetCode 257 - Binary Tree Path
+ *
+ * Time Complexity : O(n)
+ */
+void Solution::traverseForPath(TreeNode* root, string output, vector<string>& outputPath)
+{
+	if (root == nullptr) return;
+	if (root->left == nullptr && root->right == nullptr)
+	{
+		output += "->" + to_string(root->val);
+		outputPath.push_back(output);
+		return;
+	}
+
+	output += "->" + to_string(root->val);
+	if (root->left)
+	{
+		traverseForPath(root->left, output, outputPath);
+	}
+
+	if (root->right)
+	{
+		traverseForPath(root->right, output, outputPath);
+	}
+}
+
+vector<string> Solution::binaryTreePath(TreeNode* root)
+{
+	vector<string> outputPath;
+	if (root != nullptr)
+	{
+		if (root->left == nullptr && root->right == nullptr)
+			outputPath.push_back(to_string(root->val));
+		else
+		{
+			if (root->left)
+			{
+				traverseForPath(root->left, to_string(root->val), outputPath);
+			}
+
+			if (root->right)
+			{
+				traverseForPath(root->right, to_string(root->val), outputPath);
+			}
+		}
+	}
+	return outputPath;
+}
