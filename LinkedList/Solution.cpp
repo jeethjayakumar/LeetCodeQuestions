@@ -152,3 +152,55 @@ ListNode* Solution::reverseLinkedList(ListNode* head)
 	head = prev;
 	return head;
 }
+
+/*
+ * LeetCode 160 - Intersection of Two linked list
+ *
+ */
+int Solution::getListLength(ListNode* head)
+{
+	ListNode* curr = head;
+	int len = 0;
+
+	while (curr != nullptr)
+	{
+		len++;
+		curr = curr->next;
+	}
+	return len;
+}
+
+ListNode* Solution::getIntersectionNode(ListNode* headA, ListNode* headB)
+{
+	ListNode* currA = headA, * currB = headB;
+	int diff = 0;
+	int lenA = getListLength(headA);
+	int lenB = getListLength(headB);
+	
+	if (lenA < lenB)
+	{
+		diff = lenB - lenA;
+		while (diff != 0)
+		{
+			currB = currB->next;
+			diff--;
+		}
+	}
+	else
+	{
+		diff = lenA - lenB;
+		while (diff != 0)
+		{
+			currA = currA->next;
+			diff--;
+		}
+	}
+
+	while (currA != nullptr && currB != nullptr)
+	{
+		if (currA == currB) return currA;
+		currA = currA->next;
+		currB = currB->next;
+	}
+	return nullptr;
+}

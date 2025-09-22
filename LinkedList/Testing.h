@@ -12,3 +12,4 @@ void TestingMergeKSortedList(Solution& op);
 void TestingSortList(Solution& op);
 void TestingCopyListWithRandomPointer(Solution& op);
 void TestingReverseLinkedList(Solution& op);
+void TestingIntersectionOfList(Solution& op);

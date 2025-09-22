@@ -17,6 +17,9 @@ void Testing::ExecuteOperation(int& choice)
 		case 4:
 			TestingReverseLinkedList(op);
 			break;
+		case 5:
+			TestingIntersectionOfList(op);
+			break;
 		default:
 			cout<<"No operations found with that choice!!!\n";
 			break;
