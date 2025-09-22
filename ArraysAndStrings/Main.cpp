@@ -21,7 +21,8 @@ int main()
 	cout<<" 13. Max Sub-array sum with atmost 1 element deletion\n";
 	cout<<" 14. First Unique Character in a string\n";
 	cout<<" 15. Valid Anagram\n";
-	cout <<" 16. Palindrome Number\n";
+	cout<<" 16. Palindrome Number\n";
+	cout<< " 17. Valid Paranthesis\n";
 	cout<<" 0. Exit\n";
 	cout<<" Enter your choice: ";
 	cin>>choice;

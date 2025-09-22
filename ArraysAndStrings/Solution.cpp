@@ -722,3 +722,38 @@ bool Solution::isPalindrome(int& x)
 	}
 	return x == revX;
 }
+
+/*
+ * LeetCode 20 - Valid Paranthesis
+ * 
+ */
+bool Solution::isValidParanthesis(string& s)
+{
+	stack<char> par;
+	for (auto c : s)
+	{
+		switch (c)
+		{
+		case '(':
+		case '{':
+		case '[':
+			par.push(c);
+			break;
+		case ')':
+			if (!par.empty() && par.top() == '(') par.pop();
+			else par.push(c);
+			break;
+		case '}':
+			if (!par.empty() && par.top() == '{') par.pop();
+			else par.push(c);
+			break;
+		case ']':
+			if (!par.empty() && par.top() == '[') par.pop();
+			else par.push(c);
+			break;
+		default:
+			break;
+		}
+	}
+	return par.empty();
+}

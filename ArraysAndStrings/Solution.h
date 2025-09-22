@@ -25,6 +25,7 @@ class Solution
 		int firstUniqChar(string& s);
 		bool isAnagram(string& s, string& t);
 		bool isPalindrome(int& x);
+		bool isValidParanthesis(string& s);
 };
 
 // This Trie Structure is defined for FindStringsForPrefix Solution. Not made generic to others

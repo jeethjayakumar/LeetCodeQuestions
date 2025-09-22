@@ -58,6 +58,9 @@ void Testing::ExecuteOperation(int& choice)
 		case 16:
 			TestingPalindromeNumber(op);
 			break;
+		case 17:
+			TestingValidParanthesis(op);
+			break;
 		default:
 			cout<<"No operations found with that choice!!!\n";
 			break;

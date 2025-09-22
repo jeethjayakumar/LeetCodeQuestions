@@ -25,3 +25,4 @@ void TestingMaxSubArraySumWithOneDeletion(Solution& op);
 void TestingFirstUniqueCharacter(Solution& op);
 void TestingValidAnagram(Solution& op);
 void TestingPalindromeNumber(Solution& op);
+void TestingValidParanthesis(Solution& op);
